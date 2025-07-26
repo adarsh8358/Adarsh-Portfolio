@@ -9,6 +9,7 @@ import { scrollToSection } from '../../components/ScrollToSection'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
 // import ContactForm from '../../components/ContactForm'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Home = () => {
   const textRef = useRef(null)
@@ -19,6 +20,9 @@ const Home = () => {
   const [repos, setRepos] = useState([])
   const sectionRef = useRef(null)
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
   const {
     register,
     handleSubmit,
@@ -27,22 +31,26 @@ const Home = () => {
   } = useForm()
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true); // ✅ Start loading
     try {
       // const response = await fetch('http://localhost:3000/api/contact', {
       const response = await fetch('https://adarsh-portfolio-p58q.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-      })
+      });
 
-      if (!response.ok) throw new Error('Server Error')
+      if (!response.ok) throw new Error('Server Error');
 
-      toast.success('Message sent successfully!')
-      reset()
+      toast.success('Message sent successfully!');
+      reset();
     } catch (error) {
-      toast.error('Failed to send message. Try again.')
+      toast.error('Failed to send message. Try again.');
+    } finally {
+      setIsSubmitting(false); // ✅ Stop loading no matter what
     }
-  }
+  };
+
 
   const handleNavClick = (sectionId) => {
     scrollToSection(sectionId)
@@ -254,15 +262,9 @@ const Home = () => {
       {/* <hr /> */}
 
       <section id="contact" className="contact-section" ref={sectionRef}>
+        <ToastContainer position="top-right" autoClose={3000} />
         <h2 className="section-title">Contact Me</h2>
         <div className="contact-content">
-          {/* <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="text" name="number" placeholder="Mobile no." required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
-          </form> */}
 
           <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
             <input
@@ -293,10 +295,13 @@ const Home = () => {
             ></textarea>
             {errors.message && <span className="error-msg">Message is required</span>}
 
-            <button type="submit">Send Message</button>
+            {/* <button type="submit">Send Message</button> */}
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Send Message'}
+            </button>
+
           </form>
 
-          <ToastContainer className="tost" position="top-right" autoClose={3000} />
 
           <div className="contact-links">
             <h3>Connect:</h3>

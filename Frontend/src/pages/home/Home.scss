@@ -384,6 +384,12 @@ $accent: #1f6feb;
       &:hover {
         background-color: #58a6ff;
       }
+
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
     }
   }
 
