@@ -1,0 +1,46 @@
+$bg: #0d1117;
+$primary: #58a6ff;
+$text: #c9d1d9;
+$accent: #1f6feb;
+
+.footer {
+  background-color: $bg;
+  color: $text;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Funnel Display', sans-serif;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+
+    h2 {
+      font-size: 1.8rem;
+      color: $primary;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: $text;
+      margin-bottom: 1rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+
+      a {
+        color: $text;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}

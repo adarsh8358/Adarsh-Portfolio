@@ -1,0 +1,164 @@
+$bg: #0d1117;
+$primary: #58a6ff;
+$text: #c9d1d9;
+$accent: #1f6feb;
+$card: #161b22;
+
+.navbar {
+  background-color: $bg;
+  font-family: 'Funnel Display', sans-serif;
+  padding: 1.3rem 3rem;
+  color: $text;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #c9d1d957;
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+
+
+    .ri-menu-line {
+      position: absolute;
+      right: 1.5rem;
+      top: 2rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $primary;
+    text-decoration: none;
+    // text-decoration: solid underline $text;
+    border: 1px solid $text;
+    border-radius: 5px;
+    padding: 5px;
+
+    
+    span{
+      // text-decoration: solid underline $primary;
+      color: $text;
+    }
+  }
+
+  .nav-links-desktop {
+    cursor: pointer;
+    display: flex;
+    gap: 2rem;
+
+    a {
+      text-decoration: none;
+      color: $text;
+      position: relative;
+
+      &:hover {
+        color: $primary;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background-color: $accent;
+        left: 0;
+        bottom: -4px;
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: $primary;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70%;
+    background-color: $card;
+    z-index: 2000;
+    transform: translateX(100%);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .ri-close-line {
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+      font-size: 2rem;
+    }
+
+    .close-icon {
+      align-self: flex-end;
+      font-size: 2rem;
+      color: $primary;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    .nav-links-mobile {
+      display: flex;
+      flex-direction: column;
+      margin-top: 3rem;
+      margin-left: 2rem;
+      gap: 2rem;
+
+      a {
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: $text;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .mobile-menu {
+    display: none;
+  }
+
+  .navbar{
+
+        .nav-container{
+
+          .logo{
+            margin-left: -1.8rem;
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+          }
+        }
+      }
+  
+}
