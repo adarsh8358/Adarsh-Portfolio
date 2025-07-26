@@ -9,10 +9,10 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://portfolio-adarsh.onrender.com/',
+    'https://portfolio-adarsh.onrender.com', // ✅ CORRECT
   ],
-  credentials: true
 }));
+
 
 
 app.use(express.json());
