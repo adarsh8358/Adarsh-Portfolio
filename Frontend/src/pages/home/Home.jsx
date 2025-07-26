@@ -34,7 +34,7 @@ const Home = () => {
     setIsSubmitting(true); // ✅ Start loading
     try {
       // const response = await fetch('http://localhost:3000/api/contact', {
-      const response = await fetch('https://adarsh-portfolio-p58q.onrender.com', {
+      const response = await fetch('https://adarsh-portfolio-p58q.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
