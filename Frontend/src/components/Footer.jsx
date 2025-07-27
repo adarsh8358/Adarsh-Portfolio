@@ -1,5 +1,6 @@
 import React from 'react'
 import './Footer.scss'
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -15,9 +16,9 @@ const Footer = () => {
           <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">
             <i className="ri-linkedin-box-fill"></i>
           </a>
-          <a href="mailto:adarsh@example.com">
+          <Link to="mailto:adarshkushwaha8358@gmail.com">
             <i className="ri-mail-fill"></i>
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

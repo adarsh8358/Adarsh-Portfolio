@@ -320,6 +320,9 @@ const Home = () => {
               <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
                 <i className="ri-instagram-line"></i>
               </a>
+              <Link to="mailto:adarshkushwaha8358@gmail.com">
+                <i className="ri-mail-fill"></i>
+              </Link>
             </div>
           </div>
         </div>
