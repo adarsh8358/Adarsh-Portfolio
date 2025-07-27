@@ -199,7 +199,7 @@ const Home = () => {
         </div>
 
         <div className="hero-image" ref={imageRef}>
-          <img src="./imag5.jpeg" alt="Adarsh Profile" />
+          <img src="./image11.jpeg" alt="Adarsh Profile" />
         </div>
       </section>
 
@@ -223,7 +223,7 @@ const Home = () => {
           </div>
 
           <div className="about-image">
-            <img src="./imag4.jpeg" alt="Adarsh About" />
+            <img src="./image2.jpeg" alt="Adarsh About" />
           </div>
         </div>
       </section>
