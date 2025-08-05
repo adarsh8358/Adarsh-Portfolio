@@ -58,18 +58,20 @@ const Home = () => {
   }
 
 
-  const skills = [
-    { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-    { name: 'CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-    { name: 'Express', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-    { name: 'GSAP', img: 'https://seeklogo.com/images/G/gsap-logo-1A6165D6F7-seeklogo.com.png' },
-    { name: 'Three.js', img: 'https://threejs.org/files/favicon.ico' }
-  ]
-
+const skills = [
+  { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'Express', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+  { name: 'GSAP', img: 'https://imgs.search.brave.com/dRPs7gKBFzrGFUTSJ4rfLbZ4aaQRByamK-br4XGsLew/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTczOWNlYTZl/Mjg1ZGU1YmMwZDZm/Y2JjZmVlMTE5NWVj/ZWMxNTg4ZTQzZTRj/YzJlZDE5MjlmM2Nl/ZGVhYzEzZS9nc2Fw/LmNvbS8' },
+  // { name: 'GSAP', img: 'https://seeklogo.com/images/G/gsap-logo-1A6165D6F7-seeklogo.com.png' },
+  { name: 'Three.js', img: 'https://threejs.org/files/favicon.ico' },
+  { name: 'Skiper UI', img: 'https://img.icons8.com/color/96/design.png' } // 👈 Custom entry
+]
+  
 
 
   useEffect(() => {
@@ -190,8 +192,15 @@ const Home = () => {
             <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
               <i className="ri-linkedin-box-fill"></i>
             </a>
-            <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
               <i className="ri-instagram-line"></i>
+            </a> */}
+            <a
+              href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio%20and%20I'm%20interested%20in%20getting%20a%20website%20built.%20Can%20we%20discuss%20further%3F"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="ri-whatsapp-line"></i>
             </a>
           </div>
 
@@ -311,18 +320,25 @@ const Home = () => {
             </div>
 
             <div className="social-icons">
-              <a href="https://github.com/adarsh8358" target="_blank" rel="noopener noreferrer">
+              {/* <a href="https://github.com/adarsh8358" target="_blank" rel="noopener noreferrer">
                 <i className="ri-github-fill"></i>
+              </a> */}
+              <a
+                href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio%20and%20I'm%20interested%20in%20getting%20a%20website%20built.%20Can%20we%20discuss%20further%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="ri-whatsapp-line"></i>
               </a>
               <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
                 <i className="ri-linkedin-box-fill"></i>
               </a>
-              <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
-                <i className="ri-instagram-line"></i>
-              </a>
               <Link to="mailto:adarshkushwaha8358@gmail.com">
                 <i className="ri-mail-fill"></i>
               </Link>
+              <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
+                <i className="ri-instagram-line"></i>
+              </a>
             </div>
           </div>
         </div>
