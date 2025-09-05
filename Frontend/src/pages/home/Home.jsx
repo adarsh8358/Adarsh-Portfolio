@@ -8,21 +8,21 @@ import { Link } from 'react-router-dom'
 import { scrollToSection } from '../../components/ScrollToSection'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
-// import ContactForm from '../../components/ContactForm'
 import 'react-toastify/dist/ReactToastify.css'
+import ThankYouPopup from '../../components/ThankYouPopup'
 
 const Home = () => {
   const textRef = useRef(null)
   const imageRef = useRef(null)
   const aboutRef = useRef(null)
   const containerRef = useRef(null)
-
-  const [repos, setRepos] = useState([])
   const sectionRef = useRef(null)
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [repos, setRepos] = useState([])
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
 
-
+  // React Hook Form
   const {
     register,
     handleSubmit,
@@ -30,50 +30,48 @@ const Home = () => {
     formState: { errors },
   } = useForm()
 
+  // Contact form submit
   const onSubmit = async (data) => {
-    setIsSubmitting(true); // ✅ Start loading
+    setIsSubmitting(true)
     try {
-      // const response = await fetch('http://localhost:3000/api/contact', {
       const response = await fetch('https://adarsh-portfolio-p58q.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-      });
+      })
 
-      if (!response.ok) throw new Error('Server Error');
+      if (!response.ok) throw new Error('Server Error')
 
-      toast.success('Message sent successfully!');
-      reset();
+      toast.success('Message sent successfully!')
+      reset()
     } catch (error) {
-      toast.error('Failed to send message. Try again.');
+      toast.error('Failed to send message. Try again.')
     } finally {
-      setIsSubmitting(false); // ✅ Stop loading no matter what
+      setIsSubmitting(false)
     }
-  };
-
-
-  const handleNavClick = (sectionId) => {
-    scrollToSection(sectionId)
-    setMenuOpen(false) // close menu in mobile
   }
 
+  // Scroll to section
+  const handleNavClick = (sectionId) => {
+    scrollToSection(sectionId)
+    setMenuOpen(false)
+  }
 
-const skills = [
-  { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-  { name: 'CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-  { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-  { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-  { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-  { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  { name: 'Express', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-  { name: 'GSAP', img: 'https://imgs.search.brave.com/dRPs7gKBFzrGFUTSJ4rfLbZ4aaQRByamK-br4XGsLew/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTczOWNlYTZl/Mjg1ZGU1YmMwZDZm/Y2JjZmVlMTE5NWVj/ZWMxNTg4ZTQzZTRj/YzJlZDE5MjlmM2Nl/ZGVhYzEzZS9nc2Fw/LmNvbS8' },
-  // { name: 'GSAP', img: 'https://seeklogo.com/images/G/gsap-logo-1A6165D6F7-seeklogo.com.png' },
-  { name: 'Three.js', img: 'https://threejs.org/files/favicon.ico' },
-  { name: 'Skiper UI', img: 'https://img.icons8.com/color/96/design.png' } // 👈 Custom entry
-]
-  
+  // Skills list
+  const skills = [
+    { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+    { name: 'CSS', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+    { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'React', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+    { name: 'Node.js', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+    { name: 'MongoDB', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+    { name: 'Express', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+    { name: 'GSAP', img: 'https://seeklogo.com/images/G/gsap-logo-1A6165D6F7-seeklogo.com.png' },
+    { name: 'Three.js', img: 'https://threejs.org/files/favicon.ico' },
+    { name: 'Skiper UI', img: 'https://img.icons8.com/color/96/design.png' },
+  ]
 
-
+  // Hero animations
   useEffect(() => {
     gsap.from(textRef.current, {
       x: -100,
@@ -91,6 +89,7 @@ const skills = [
     })
   }, [])
 
+  // About section animation
   useEffect(() => {
     gsap.from(aboutRef.current, {
       y: 100,
@@ -106,6 +105,7 @@ const skills = [
 
   gsap.registerPlugin(ScrollTrigger)
 
+  // Skills animation
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -128,17 +128,18 @@ const skills = [
     return () => ctx.revert()
   }, [])
 
-
+  // GitHub repos
   useEffect(() => {
     fetch('https://api.github.com/users/adarsh8358/repos')
       .then(res => res.json())
       .then(data => {
-        const pinned = data.slice(0, 6) // Show latest 6 repos
+        const pinned = data.slice(0, 6)
         setRepos(pinned)
       })
       .catch(err => console.error('GitHub API error:', err))
   }, [])
 
+  // Projects animation
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.project-card', {
@@ -157,6 +158,7 @@ const skills = [
     return () => ctx.revert()
   }, [])
 
+  // Contact animation
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from('.contact-content', {
@@ -174,11 +176,22 @@ const skills = [
     return () => ctx.revert()
   }, [])
 
+  // Popup delay (always shows after refresh)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true)
+    }, 700) // ⏳ 2 seconds delay
+
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
-
     <main>
+      {showPopup && <ThankYouPopup onClose={() => setShowPopup(false)} />}
+
       <Nav />
+
+      {/* Hero Section */}
       <section id="home" className="hero-section">
         <div className="hero-content" ref={textRef}>
           <h1>Hello, I'm <span>Adarsh</span></h1>
@@ -189,14 +202,11 @@ const skills = [
             <a href="https://github.com/adarsh8358" target="_blank" rel="noopener noreferrer">
               <i className="ri-github-fill"></i>
             </a>
-            <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272" target="_blank" rel="noopener noreferrer">
               <i className="ri-linkedin-box-fill"></i>
             </a>
-            {/* <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
-              <i className="ri-instagram-line"></i>
-            </a> */}
             <a
-              href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio%20and%20I'm%20interested%20in%20getting%20a%20website%20built.%20Can%20we%20discuss%20further%3F"
+              href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio.%20Can%20I%20get%20more%20info%20about%20your%20services%3F"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -212,33 +222,27 @@ const skills = [
         </div>
       </section>
 
-
-      {/* <hr /> */}
-
+      {/* About Section */}
       <section id="about" className="about-section">
         <div className="about-container" ref={aboutRef}>
           <div className="about-text">
             <h2>About Me</h2>
             <p>
-              I'm <strong> Adarsh</strong>, a passionate <strong>full-stack developer</strong> who loves to build fast, <strong>responsive</strong>,
-              and <strong> dynamic</strong> web applications using the <strong>MERN</strong> stack. With a strong foundation in frontend
-              and backend technologies, I bring ideas to life in the browser and beyond.
+              I'm <strong>Adarsh</strong>, a passionate <strong>full-stack MERN developer</strong> who loves to build fast,
+              <strong> responsive</strong>, and <strong>dynamic</strong> web applications using the <strong>MERN</strong> stack.
             </p>
             <p>
               My focus is on writing clean, scalable code and creating user-friendly experiences.
-              I'm also exploring animation libraries like GSAP and 3D tools like Three.js to make
-              websites more interactive and visually stunning.
+              I'm also exploring animation libraries like GSAP and 3D tools like Three.js.
             </p>
           </div>
-
           <div className="about-image">
             <img src="./image2.jpeg" alt="Adarsh About" />
           </div>
         </div>
       </section>
 
-      {/* <hr /> */}
-
+      {/* Skills Section */}
       <section id="skills" className="skills-section" ref={containerRef}>
         <h2 className="section-title">My Skills</h2>
         <div className="skills-grid">
@@ -251,8 +255,38 @@ const skills = [
         </div>
       </section>
 
-      {/* <hr /> */}
+      {/* Services Section */}
+      <section id="services" className="services-section">
+        <h2 className="section-title">Services</h2>
+        <div className="services-grid">
+          <div className="service-card">
+            <i className="ri-code-s-slash-line"></i>
+            <h3>Web Development</h3>
+            <p>Responsive websites with modern frameworks like React, Node.js, and Express.</p>
+          </div>
 
+          <div className="service-card">
+            <i className="ri-smartphone-line"></i>
+            <h3>Responsive Design</h3>
+            <p>Mobile-friendly, cross-browser compatible layouts with smooth UI/UX.</p>
+          </div>
+
+          <div className="service-card">
+            <i className="ri-database-2-line"></i>
+            <h3>Full Stack Apps</h3>
+            <p>End-to-end applications with MongoDB, Express, React, and Node.js.</p>
+          </div>
+
+          <div className="service-card">
+            <i className="ri-paint-brush-line"></i>
+            <h3>Animations & UI</h3>
+            <p>Interactive and engaging interfaces with GSAP & Three.js.</p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Projects Section */}
       <section id="projects" className="project-section" ref={sectionRef}>
         <h2 className="section-title">Projects</h2>
         <div className="project-grid">
@@ -268,13 +302,11 @@ const skills = [
         </div>
       </section>
 
-      {/* <hr /> */}
-
+      {/* Contact Section */}
       <section id="contact" className="contact-section" ref={sectionRef}>
         <ToastContainer position="top-right" autoClose={3000} />
         <h2 className="section-title">Contact Me</h2>
         <div className="contact-content">
-
           <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
@@ -304,13 +336,10 @@ const skills = [
             ></textarea>
             {errors.message && <span className="error-msg">Message is required</span>}
 
-            {/* <button type="submit">Send Message</button> */}
             <button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Submitting...' : 'Send Message'}
             </button>
-
           </form>
-
 
           <div className="contact-links">
             <h3>Connect:</h3>
@@ -320,30 +349,26 @@ const skills = [
             </div>
 
             <div className="social-icons">
-              {/* <a href="https://github.com/adarsh8358" target="_blank" rel="noopener noreferrer">
-                <i className="ri-github-fill"></i>
-              </a> */}
               <a
-                href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio%20and%20I'm%20interested%20in%20getting%20a%20website%20built.%20Can%20we%20discuss%20further%3F"
+                href="https://wa.me/918358958635?text=Hi%20Adarsh%2C%20I%20just%20visited%20your%20portfolio"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <i className="ri-whatsapp-line"></i>
               </a>
-              <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/adarsh-kushwaha-a39259272" target="_blank" rel="noopener noreferrer">
                 <i className="ri-linkedin-box-fill"></i>
               </a>
               <Link to="mailto:adarshkushwaha8358@gmail.com">
                 <i className="ri-mail-fill"></i>
               </Link>
-              <a href="https://www.instagram.com/adarshkushwaha444?igsh=MWxocDJlMWRmN2xybQ==" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/adarshkushwaha444" target="_blank" rel="noopener noreferrer">
                 <i className="ri-instagram-line"></i>
               </a>
             </div>
           </div>
         </div>
       </section>
-
 
       <Footer />
     </main>

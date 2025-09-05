@@ -49,6 +49,7 @@ const Nav = () => {
           <a onClick={() => handleNavClick('home')}>Home</a>
           <a onClick={() => handleNavClick('about')}>About</a>
           <a onClick={() => handleNavClick('skills')}>Skills</a>
+          <a onClick={() => handleNavClick('services')}>Services</a>
           <a onClick={() => handleNavClick('projects')}>Projects</a>
           <a onClick={() => handleNavClick('contact')}>Contact</a>
         </div>
@@ -68,6 +69,7 @@ const Nav = () => {
           <a onClick={() => handleNavClick('home')}>Home</a>
           <a onClick={() => handleNavClick('about')}>About</a>
           <a onClick={() => handleNavClick('skills')}>Skills</a>
+          <a onClick={() => handleNavClick('services')}>Services</a>
           <a onClick={() => handleNavClick('projects')}>Projects</a>
           <a onClick={() => handleNavClick('contact')}>Contact</a>
         </div>
